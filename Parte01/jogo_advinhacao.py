@@ -22,6 +22,7 @@ def cabecalho_do_programa():
 cabecalho_do_programa()
 numero_advinhacao = 42
 
+# Teste a branch novo
 
 
 chute_str = input("Digite um chute com o número que acha que é o certo: ")
