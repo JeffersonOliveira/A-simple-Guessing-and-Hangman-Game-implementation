@@ -22,6 +22,8 @@ def cabecalho_do_programa():
 cabecalho_do_programa()
 numero_advinhacao = 42
 
+
+
 chute_str = input("Digite um chute com o número que acha que é o certo: ")
 print("Você digitou: ", chute_str)
 chute = int(chute_str)
@@ -30,6 +32,9 @@ acertou         = chute == numero_advinhacao
 chute_foi_maior = chute > numero_advinhacao
 chute_foi_menor = chute < numero_advinhacao
 
+total_de_tentativas =3
+rodada = 1
+ 
 if (acertou):
     print("")
     print("Parabéns, você acertou o número!")
