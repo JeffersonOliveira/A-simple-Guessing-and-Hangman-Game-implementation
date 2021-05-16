@@ -3,6 +3,14 @@
 import time
 import os
 
+RED   = "\033[1;31m"  
+BLUE  = "\033[1;34m"
+CYAN  = "\033[1;36m"
+GREEN = "\033[0;32m"
+RESET = "\033[0;0m"
+BOLD    = "\033[;1m"
+REVERSE = "\033[;7m"
+
 def cabecalho_do_programa():
         """
         Created on Mon May 10 13:16:26 2021
@@ -11,18 +19,20 @@ def cabecalho_do_programa():
         A pessoa irá tentar acertar o valor que julga ser o "sorteado";
         O programa tem que dizer se o valor é maior, menor ou se foi o acertado;
         """
-        print("*************************************************")
-        print("*****************INICIO**************************")
+        print("***************************************************************")
+        print("***************************INICIO******************************")
         print("")
-        print("      Bem vindo ao jogo de Advinhação!!!         ")
+        print( RED + "      Bem vindo ao jogo de Advinhação!!!  " + RESET)
         print("")
-        print("*************************************************")
-        print("    Desenvolvido por: Jefferson Oliveira")
-        print("    Contato:xxxxxxxxxxxxxxxxx")
-        print("*************************************************")
+        print("***************************************************************")
+        print(GREEN+ " Desenvolvido por: Jefferson Oliveira")
+        print(" Contatos:")
+        print("    Linkedin: https://www.linkedin.com/in/jeffersonnsoliveira/ ")
+        print("      Github: https://github.com/JeffersonOliveira/ "+ RESET)
+        print(" *************************************************************** \033[0;0m")
 
 def principal():
-    
+    os.system("cls")    
     cabecalho_do_programa()
     numero_advinhacao = 42
 
@@ -37,25 +47,29 @@ def principal():
     
     if (acertou):
         print("")
-        print("Parabéns, você acertou o número!")
+        print(GREEN + "Parabéns, você acertou o número! " + RESET)
+        reinicia_jogo()
         print("")
     elif (chute_foi_maior):
         print("")
-        print("Você errou! O número ",chute," é maior o número a ser advinhado")
+        print(RED + "Você errou! O número ",chute," é maior o número a ser advinhado "+ RESET)
+        reinicia_jogo()
         print("")
     elif (chute_foi_menor):
         print("")
-        print("Você errou! O número ",chute," é menor o número a ser advinhado")
+        print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
+        reinicia_jogo()
         print("")
 
-def reinicia_jogo():
 
+def reinicia_jogo():
     resposta = input("Deseja tentar novamente ('y'/'n') ?")
     print("Você digitou: ", resposta)
+    time.sleep(3)
     while (resposta != "y" or resposta != "n"):
         if (resposta == "n"):
             print("")
-            print("Foi bom jogar com você até mais!");
+            print(BLUE +"Foi bom jogar com você até mais!" + RESET);
             break
 
         elif (resposta == "y"):
@@ -63,7 +77,9 @@ def reinicia_jogo():
             time.sleep(1)
 
             os.system("cls")
+            print("Você terá mais uma chance!")
             principal()
+            break
             
         else:
             print("Valor inválido! ")
@@ -71,6 +87,6 @@ def reinicia_jogo():
     
 
 principal()
-reinicia_jogo()
-print("")
-print("**********************FIM************************")
+print("Tchau!!!")
+print("***************************************************************")
+time.sleep(3)
