@@ -38,25 +38,27 @@ def principal():
     total_de_tentativas = 3
 
     for  rodada in range(1,total_de_tentativas+1):
-        #print("Tentativa {} de {}".format(rodada,total_de_tentativas));
-        print("Tentativa", rodada, "de", total_de_tentativas)
-        chute_str = input("Digite um chute com o número que acha que é o certo: ")
+        print("Tentativa {} de {}".format(rodada,total_de_tentativas));
+        chute_str = input("Digite um número entre 1 e 100:  ")
         print("Você digitou: ", chute_str)
         chute = int(chute_str)
         acertou         = chute == numero_advinhacao
         chute_foi_maior = chute > numero_advinhacao
         chute_foi_menor = chute < numero_advinhacao
        
-        if (acertou):
+        if(chute < 1 or chute >100):
+            print(RED + "Você deve digitar um número entre 1 e 100"+ RESET)
             print("")
+            continue
+
+        if (acertou):
             print(GREEN + "Parabéns, você acertou o número! " + RESET)
             print("")
+            break
         elif (chute_foi_maior):
-            print("")
             print(RED + "Você errou! O número ",chute," é maior o número a ser advinhado "+ RESET)
             print("")
         elif (chute_foi_menor):
-            print("")
             print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
             print("")
 
@@ -86,6 +88,6 @@ def reinicia_jogo():
     
 
 principal()
-print(BLUE + "Tchau!!!" + RESET)
+print(BLUE + "Fim do Jogo!!!" + RESET)
 print("***************************************************************")
 time.sleep(3)
