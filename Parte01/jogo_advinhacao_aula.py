@@ -2,6 +2,7 @@
 #@Author: Jefferson Oliveira
 import time
 import os
+import random
 
 RED   = "\033[1;31m"  
 BLUE  = "\033[1;34m"
@@ -34,8 +35,12 @@ def cabecalho_do_programa():
 def principal():
     os.system("cls")    
     cabecalho_do_programa()
-    numero_advinhacao = 42
+    
+    #numero_advinhacao = round(random.random() * 100) # 0.0 1.0
+    numero_advinhacao = random.randrange(1,100)
     total_de_tentativas = 3
+
+    print(numero_advinhacao)
 
     for  rodada in range(1,total_de_tentativas+1):
         print("Tentativa {} de {}".format(rodada,total_de_tentativas));
