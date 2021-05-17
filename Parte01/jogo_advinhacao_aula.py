@@ -36,21 +36,17 @@ def principal():
     cabecalho_do_programa()
     numero_advinhacao = 42
     total_de_tentativas = 3
-    rodada = 1 
 
-
-    while(rodada <= total_de_tentativas):
+    for  rodada in range(1,total_de_tentativas+1):
         #print("Tentativa {} de {}".format(rodada,total_de_tentativas));
         print("Tentativa", rodada, "de", total_de_tentativas)
         chute_str = input("Digite um chute com o número que acha que é o certo: ")
         print("Você digitou: ", chute_str)
         chute = int(chute_str)
-
         acertou         = chute == numero_advinhacao
         chute_foi_maior = chute > numero_advinhacao
         chute_foi_menor = chute < numero_advinhacao
-        
-
+       
         if (acertou):
             print("")
             print(GREEN + "Parabéns, você acertou o número! " + RESET)
@@ -64,9 +60,7 @@ def principal():
             print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
             print("")
 
-        rodada = rodada + 1
-
-# Essa função não está sendo mais utilizado, pois realizei uma mundança no código para seguir o exercício proposto pelas aulas.
+# Essa função não está sendo mais utilizada:
 def reinicia_jogo():
     resposta = input("Deseja tentar novamente ('y'/'n') ?")
     print("Você digitou: ", resposta)
