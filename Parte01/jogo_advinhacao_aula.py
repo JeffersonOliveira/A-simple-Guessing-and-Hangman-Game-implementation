@@ -37,22 +37,36 @@ def principal():
     cabecalho_do_programa()
     
     #numero_advinhacao = round(random.random() * 100) # 0.0 1.0
-    numero_advinhacao = random.randrange(1,100)
-    total_de_tentativas = 3
+    print(RED + "Vamos realizar um sorteio, você deve escolher abaixo o intervalo que deseja!" + RESET)
+    valor_max = int(input("Digite de 1 até qual número você desejar realizar o sorteio: "))
+    numero_advinhacao = random.randrange(1,valor_max+1)
+    total_de_tentativas = 0
+
+    print("Qual nível de dificuldade?")
+    print("(1) Fácil, (2) Médio, (3) Díficil")
+
+    nivel = int(input("Defina um nível: "))
+
+    if (nivel == 1):
+        total_de_tentativas = 9
+    elif (nivel == 2):
+        total_de_tentativas = 6
+    else:
+        total_de_tentativas = 3    
 
     print(numero_advinhacao)
 
     for  rodada in range(1,total_de_tentativas+1):
         print("Tentativa {} de {}".format(rodada,total_de_tentativas));
-        chute_str = input("Digite um número entre 1 e 100:  ")
+        chute_str = input(f"Digite um número entre 1 e {valor_max}:  ")
         print("Você digitou: ", chute_str)
         chute = int(chute_str)
         acertou         = chute == numero_advinhacao
         chute_foi_maior = chute > numero_advinhacao
         chute_foi_menor = chute < numero_advinhacao
        
-        if(chute < 1 or chute >100):
-            print(RED + "Você deve digitar um número entre 1 e 100"+ RESET)
+        if(chute < 1 or chute > valor_max):
+            print(RED + f"Você deve digitar um número entre 1 e {valor_max}"+ RESET)
             print("")
             continue
 
