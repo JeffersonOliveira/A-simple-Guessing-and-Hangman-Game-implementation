@@ -54,7 +54,7 @@ def principal():
     else:
         total_de_tentativas = 3    
 
-    print(numero_advinhacao)
+    #print(numero_advinhacao)
 
     for  rodada in range(1,total_de_tentativas+1):
         print("Tentativa {} de {}".format(rodada,total_de_tentativas));
@@ -80,6 +80,8 @@ def principal():
         elif (chute_foi_menor):
             print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
             print("")
+    print(CYAN+BOLD+"O número a ser advinhado era {}".format(numero_advinhacao)+RESET)
+
 
 # Essa função não está sendo mais utilizada:
 def reinicia_jogo():
