@@ -99,3 +99,6 @@ def jogar():
     print(BLUE + "Fim do Jogo!!!" + RESET)
     print("***************************************************************")
     time.sleep(3)   
+
+if (__name__ == '__main__'):
+    jogar()
