@@ -43,17 +43,22 @@ def principal():
     total_de_tentativas = 0
     pontos = 1000
 
-    print("Qual nível de dificuldade?")
-    print("(1) Fácil, (2) Médio, (3) Díficil")
+    while(total_de_tentativas == 0):
+        print("Qual nível de dificuldade?")
+        print("(1) Fácil, (2) Médio, (3) Díficil")
 
-    nivel = int(input("Defina um nível: "))
+        nivel = int(input("Defina um nível: "))
 
-    if (nivel == 1):
-        total_de_tentativas = 9
-    elif (nivel == 2):
-        total_de_tentativas = 6
-    else:
-        total_de_tentativas = 3    
+        if (nivel == 1):
+            total_de_tentativas = 9
+        elif (nivel == 2):
+            total_de_tentativas = 6
+        elif (nivel == 3):
+            total_de_tentativas = 3    
+        else:
+            total_de_tentativas = 0
+            print("Por favor, digite uma das opções solicitadas. Você digitou {}".format(nivel))
+            print()
 
     #print(numero_advinhacao)
 
@@ -84,34 +89,10 @@ def principal():
                 print("")
             pontos_perdidos = int(abs(numero_advinhacao-chute)) #40-20 =
             pontos = pontos - pontos_perdidos
-
-    print(CYAN+BOLD+"O número a ser advinhado era {}".format(numero_advinhacao)+RESET)
-
-
-# Essa função não está sendo mais utilizada:
-def reinicia_jogo():
-    resposta = input("Deseja tentar novamente ('y'/'n') ?")
-    print("Você digitou: ", resposta)
-    time.sleep(3)
-    while (resposta != "y" or resposta != "n"):
-        if (resposta == "n"):
-            print("")
-            print(BLUE +"Foi bom jogar com você até mais!" + RESET);
-            break
-
-        elif (resposta == "y"):
-            print("Reiniciando o jogo!");
-            time.sleep(1)
-
-            os.system("cls")
-            print("Você terá mais uma chance!")
-            principal()
-            break
             
-        else:
-            print("Valor inválido! ")
-            resposta = input("Por favor,escolha 'y' ou 'n'!")       
-    
+            if( rodada == total_de_tentativas):
+                print(CYAN+BOLD+"O número a ser advinhado era {}".format(numero_advinhacao)+RESET)
+   
 
 principal()
 print(BLUE + "Fim do Jogo!!!" + RESET)
