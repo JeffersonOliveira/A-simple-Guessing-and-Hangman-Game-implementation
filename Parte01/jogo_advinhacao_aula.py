@@ -41,6 +41,7 @@ def principal():
     valor_max = int(input("Digite de 1 até qual número você desejar realizar o sorteio: "))
     numero_advinhacao = random.randrange(1,valor_max+1)
     total_de_tentativas = 0
+    pontos = 1000
 
     print("Qual nível de dificuldade?")
     print("(1) Fácil, (2) Médio, (3) Díficil")
@@ -71,15 +72,19 @@ def principal():
             continue
 
         if (acertou):
-            print(GREEN + "Parabéns, você acertou o número! " + RESET)
+            print(GREEN + "Parabéns, você acertou o número e fez {} pontos ".format(pontos) + RESET)
             print("")
             break
-        elif (chute_foi_maior):
-            print(RED + "Você errou! O número ",chute," é maior o número a ser advinhado "+ RESET)
-            print("")
-        elif (chute_foi_menor):
-            print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
-            print("")
+        else:
+            if (chute_foi_maior):
+                print(RED + "Você errou! O número ",chute," é maior o número a ser advinhado "+ RESET)
+                print("")
+            else:
+                print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
+                print("")
+            pontos_perdidos = int(abs(numero_advinhacao-chute)) #40-20 =
+            pontos = pontos - pontos_perdidos
+
     print(CYAN+BOLD+"O número a ser advinhado era {}".format(numero_advinhacao)+RESET)
 
 
