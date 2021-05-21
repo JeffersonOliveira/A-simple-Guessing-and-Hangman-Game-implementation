@@ -33,6 +33,12 @@ def jogar():
             print("      Github: https://github.com/JeffersonOliveira/ "+ RESET)
             print(" *************************************************************** \033[0;0m")
 
+
+            print("")
+            print( RED + BOLD + "         PROJETO EM DESENVOLVIMENTO  !!!  " + RESET)
+            print("")
+            print("***************************************************************")
+
     def principal():
     # os.system("cls")    
         cabecalho_do_programa()
