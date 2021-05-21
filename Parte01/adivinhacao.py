@@ -34,10 +34,8 @@ def jogar():
             print(" *************************************************************** \033[0;0m")
 
     def principal():
-        #os.system("cls")    
         cabecalho_do_programa()
         
-        #numero_advinhacao = round(random.random() * 100) # 0.0 1.0
         print(RED + "Vamos realizar um sorteio, você deve escolher abaixo o intervalo que deseja!" + RESET)
         valor_max = int(input("Digite de 1 até qual número você desejar realizar o sorteio: "))
         numero_advinhacao = random.randrange(1,valor_max+1)
@@ -60,8 +58,6 @@ def jogar():
                 total_de_tentativas = 0
                 print("Por favor, digite uma das opções solicitadas. Você digitou {}".format(nivel))
                 print()
-
-        #print(numero_advinhacao)
 
         for  rodada in range(1,total_de_tentativas+1):
             print("Tentativa {} de {}".format(rodada,total_de_tentativas));
