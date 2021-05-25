@@ -32,8 +32,6 @@ def jogar():
             print("    Linkedin: https://www.linkedin.com/in/jeffersonnsoliveira/ ")
             print("      Github: https://github.com/JeffersonOliveira/ "+ RESET)
             print(" *************************************************************** \033[0;0m")
-
-
             print("")
             print( RED + BOLD + "         PROJETO EM DESENVOLVIMENTO  !!!  " + RESET)
             print("")
@@ -42,6 +40,22 @@ def jogar():
     def principal():
     # os.system("cls")    
         cabecalho_do_programa()
+
+        enforcou = False
+        acertou  = False
+
+        while(not enforcou and not acertou):
+            print("Jogando....")
+            acertou = input("Digite False ou True: ")
+           
+            if (acertou == "True"):
+                print("Você acertou o valor")
+                acertou = True
+            else:
+                print("Você digitou um valor diferente de 'True', tente novamente!")
+                acertou = False
+
+
         
     principal()
     print(BLUE + "Fim do Jogo!!!" + RESET)
