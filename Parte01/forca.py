@@ -41,22 +41,26 @@ def jogar():
     # os.system("cls")    
         cabecalho_do_programa()
 
+        palavra_secreta = "banana"
+
         enforcou = False
         acertou  = False
 
         while(not enforcou and not acertou):
             print("Jogando....")
-            acertou = input("Digite False ou True: ")
-           
-            if (acertou == "True"):
-                print("Você acertou o valor")
-                acertou = True
-            else:
-                print("Você digitou um valor diferente de 'True', tente novamente!")
-                acertou = False
+            chute = input("Digite uma letra para o chute da forca: ")
 
+            chute = chute.strip()
 
-        
+            index = 0
+            for  letra in palavra_secreta:
+                if (chute.upper() == letra.upper()):
+                    print("Encontrei a letra '{}' na posição {}".format(chute,index))
+                elif(chute != letra):
+                    print("Não encontrei a letra '{}' na posição {}".format(chute,index))
+                index= index + 1
+                
+
     principal()
     print(BLUE + "Fim do Jogo!!!" + RESET)
     print("***************************************************************")
