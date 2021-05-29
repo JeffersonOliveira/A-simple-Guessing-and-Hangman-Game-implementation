@@ -42,25 +42,34 @@ def jogar():
         cabecalho_do_programa()
 
         palavra_secreta = "banana"
+        letras_acertadas =["_","_","_","_","_","_"]
+        chutes_realizados=[]
 
         enforcou = False
         acertou  = False
+        qtd_chutes = 1
 
         while(not enforcou and not acertou):
-            print("Jogando....")
+            
             chute = input("Digite uma letra para o chute da forca: ")
-
             chute = chute.strip()
-
+            
             index = 0
             for  letra in palavra_secreta:
                 if (chute.upper() == letra.upper()):
-                    print("Encontrei a letra '{}' na posição {}".format(chute,index))
-                elif(chute != letra):
-                    print("Não encontrei a letra '{}' na posição {}".format(chute,index))
-                index= index + 1
-                
+                    #print("Encontrei a letra '{}' na posição {}".format(chute,index))
+                    letras_acertadas[index] = letra
+                index= index + 1    
 
+            chutes_realizados.append(chute.lower())    
+            print("Chutes já realizados:")
+            print(chutes_realizados)
+            print("")
+            print("Letras Acertadas")
+            print(letras_acertadas)
+            print("Jogando...{}° tentativa...".format(qtd_chutes))
+            qtd_chutes = qtd_chutes + 1
+                
     principal()
     print(BLUE + "Fim do Jogo!!!" + RESET)
     print("***************************************************************")
