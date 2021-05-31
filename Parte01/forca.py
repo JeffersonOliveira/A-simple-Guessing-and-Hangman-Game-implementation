@@ -37,8 +37,9 @@ def jogar():
         #os.system("cls")
         cabecalho_do_programa()
 
-        palavra_secreta = "banana".upper()
-        letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+        palavra_secreta = "maça".upper()
+        letras_acertadas = ["_" for letra in palavra_secreta] # list comprehensions
+
         chutes_realizados = []
 
         enforcou = False
