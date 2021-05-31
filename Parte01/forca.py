@@ -37,52 +37,65 @@ def jogar():
         #os.system("cls")
         cabecalho_do_programa()
 
-        palavra_secreta = "banana"
+        palavra_secreta = "banana".upper()
         letras_acertadas = ["_", "_", "_", "_", "_", "_"]
         chutes_realizados = []
 
         enforcou = False
         acertou = False
+        erros = 0
+        max_de_chances_para_erros = 6
         qtd_chutes = 1
 
+        #print(letras_acertadas)
+
         while (not enforcou and not acertou):
-            print("")
-            print("Jogando...{}° tentativa...".format(qtd_chutes))
+            #print("")
+            #print("Jogando...{}° tentativa e teve {} erro(s)".format(qtd_chutes,erros))
 
-            chute = input("Digite uma letra para o chute da forca: ")
-            chute = chute.strip()
-
-            index = 0
-            for letra in palavra_secreta:
-                if (chute.upper() == letra.upper()):
-                    # print("Encontrei a letra '{}' na posição {}".format(chute,index))
-                    letras_acertadas[index] = letra
-
-                index = index + 1
-
-            print("")
-            chutes_realizados.append(chute.lower())
-            print("Você já fez {} chute(s), veja abaixo:".format(qtd_chutes))
-            print(chutes_realizados)
-            print("")
-
-            print("Letras Acertadas")
+            print(""); print("Letras Acertadas")
             print(letras_acertadas)
 
+            chute = input("Digite uma letra para o chute da forca: ")
+            chute = chute.strip().upper()
+
+            if(chute in palavra_secreta):
+                index = 0
+                for letra in palavra_secreta:
+                    if (chute == letra):
+                        letras_acertadas[index] = letra
+                    index += 1
+            else:
+                erros += 1
+                print("Ops.. Você errou.Ainda tem {} chances para errar, cuidado!".format(max_de_chances_para_erros-erros))
+
+            enforcou = erros == max_de_chances_para_erros
+            acertou  = "_" not in letras_acertadas #acertou  = letras_acertadas.count("_") == 0
+
+            chutes_realizados.append(chute.upper())
+            print("Você já fez {} chute(s) e teve {} erro(s) :".format(qtd_chutes, erros))
+            print(chutes_realizados)
+
+            qtd_chutes = qtd_chutes + 1
+
+        if(acertou):
+            print("");print("Você Ganhou!")
+        else:
+            print("Você perdeu!")
+
+            '''
             qtd_letras_acertadas = len(letras_acertadas) - letras_acertadas.count("_")
             if qtd_letras_acertadas == len(letras_acertadas):
                 print('Parabéns, você acertou todas as letras da palavra!')
                 acertou = True
             else:
                 print("Você acertou {} de {} letra(s) da palavra!".format(qtd_letras_acertadas,len(letras_acertadas)))
-
-            qtd_chutes = qtd_chutes + 1
+            '''
 
     principal()
     print(BLUE + "Fim do Jogo!!!" + RESET)
     print("***************************************************************")
     time.sleep(3)
-
 
 if (__name__ == '__main__'):
     jogar()
