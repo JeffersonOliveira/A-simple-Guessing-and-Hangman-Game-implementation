@@ -2,6 +2,7 @@
 # @Author: Jefferson Oliveira
 import time
 import os
+from random import randrange
 
 
 def jogar():
@@ -34,10 +35,26 @@ def jogar():
         print(" *************************************************************** \033[0;0m")
 
     def principal():
+
         #os.system("cls")
         cabecalho_do_programa()
 
-        palavra_secreta = "maça".upper()
+        arquivo = open('palavras.txt', 'r' , encoding='utf-8')
+        palavras = []
+
+        for linha in arquivo:
+            linha = linha.strip()
+            palavras.append(linha)
+        arquivo.close()
+
+        print(palavras)
+        indice_palavras = randrange(0,len(palavras))
+        palavra_secreta = palavras[indice_palavras].upper()
+
+
+        print("Exibindo teste de palavra secreta: {}".format(palavra_secreta))
+
+
         letras_acertadas = ["_" for letra in palavra_secreta] # list comprehensions
 
         chutes_realizados = []
