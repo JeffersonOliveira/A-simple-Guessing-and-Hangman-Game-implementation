@@ -132,6 +132,10 @@ def imprime_mensagem_perdedor(palavra_secreta):
     print("     \_         _/         ")
     print("       \_______/           ")
 
+
+
+
+
 def imprime_mensagem_de_atualizacao_de_jogadas(letras_acertadas, chutes_realizados, qtd_chutes, erros):
     print("");
     print("Letras Acertadas")

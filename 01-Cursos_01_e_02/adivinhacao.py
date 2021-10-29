@@ -37,6 +37,7 @@ def jogar():
         cabecalho_do_programa()
         
         print(RED + "Vamos realizar um sorteio, você deve escolher abaixo o intervalo que deseja!" + RESET)
+
         valor_max = int(input("Digite de 1 até qual número você desejar realizar o sorteio: "))
         numero_advinhacao = random.randrange(1,valor_max+1)
         total_de_tentativas = 0
@@ -59,7 +60,7 @@ def jogar():
                 print("Por favor, digite uma das opções solicitadas. Você digitou {}".format(nivel))
                 print()
 
-        for  rodada in range(1,total_de_tentativas+1):
+        for rodada in range(1,total_de_tentativas+1):
             print("Tentativa {} de {}".format(rodada,total_de_tentativas));
             chute_str = input(f"Digite um número entre 1 e {valor_max}:  ")
             print("Você digitou: ", chute_str)
@@ -79,13 +80,15 @@ def jogar():
                 break
             else:
                 if (chute_foi_maior):
-                    print(RED + "Você errou! O número ",chute," é maior o número a ser advinhado "+ RESET)
+                    print(RED + "Você errou! O número ",chute," é maior do que o número a ser advinhado "+ RESET)
                     print("")
                 else:
-                    print(RED +"Você errou! O número ",chute," é menor o número a ser advinhado "+ RESET)
+                    print(RED +"Você errou! O número ",chute," é menor do que o número a ser advinhado "+ RESET)
                     print("")
-                pontos_perdidos = int(abs(numero_advinhacao-chute)) #40-20 =
+                pontos_perdidos = int(abs(numero_advinhacao-chute)) #10-50 = |-40|
                 pontos = pontos - pontos_perdidos
+
+                print(f"Agora você está com {pontos}/1000 pontos!!!")
                 
                 if( rodada == total_de_tentativas):
                     print(CYAN+BOLD+"O número a ser advinhado era {}".format(numero_advinhacao)+RESET)
