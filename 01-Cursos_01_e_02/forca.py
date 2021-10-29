@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author: Jefferson Oliveira
 import time
-import os
 from random import randrange
 
 RED = "\033[1;31m"
@@ -11,6 +10,7 @@ GREEN = "\033[0;32m"
 RESET = "\033[0;0m"
 BOLD = "\033[;1m"
 REVERSE = "\033[;7m"
+
 
 def jogar():
     imprime_mensagem_de_abertura()
@@ -27,21 +27,21 @@ def jogar():
     while (not enforcou and not acertou):
         chute = pede_chute()
 
-        if(chute in palavra_secreta):
-             marca_chute_correto(chute, letras_acertadas, palavra_secreta)
+        if (chute in palavra_secreta):
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
             desenha_forca(erros, max_de_chances_para_erros)
 
         enforcou = erros == max_de_chances_para_erros
-        acertou  = "_" not in letras_acertadas #acertou  = letras_acertadas.count("_") == 0
+        acertou = "_" not in letras_acertadas  # acertou  = letras_acertadas.count("_") == 0
         chutes_realizados.append(chute.upper())
 
         imprime_mensagem_de_atualizacao_de_jogadas(letras_acertadas, chutes_realizados, qtd_chutes, erros)
 
         qtd_chutes = qtd_chutes + 1
 
-    if(acertou):
+    if (acertou):
         imprime_mensagem_vencedor(letras_acertadas)
     else:
         imprime_mensagem_perdedor(palavra_secreta)
@@ -67,7 +67,8 @@ def imprime_mensagem_de_abertura():
     print("    Linkedin: https://www.linkedin.com/in/jeffersonnsoliveira/ ")
     print("      Github: https://github.com/JeffersonOliveira/ " + RESET)
     print(" *************************************************************** \033[0;0m")
-    print(BLUE + "Você está no jogo da forca e tem 7 chances de acertar antes de se enforcar!!!"+ RESET)
+    print(BLUE + "Você está no jogo da forca e tem 7 chances de acertar antes de se enforcar!!!" + RESET)
+
 
 def carrega_palavra_secreta():
     arquivo = open('palavras.txt', 'r', encoding='utf-8')
@@ -83,13 +84,16 @@ def carrega_palavra_secreta():
 
     return palavra_secreta
 
+
 def inicializa_letras_acertadas(palavra):
-    return ["_" for letra in palavra] # list comprehensions
+    return ["_" for letra in palavra]  # list comprehensions
+
 
 def pede_chute():
     chute = input("Digite uma letra para o chute da forca: ")
     chute = chute.strip().upper()
-    return(chute)
+    return chute
+
 
 def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
     index = 0
@@ -97,6 +101,7 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
         if (chute == letra):
             letras_acertadas[index] = letra
         index += 1
+
 
 def imprime_mensagem_vencedor(letras_acertadas):
     print("Parabéns, você ganhou!")
@@ -111,6 +116,7 @@ def imprime_mensagem_vencedor(letras_acertadas):
     print("           ) (          ")
     print("         _.' '._        ")
     print("        '-------'       ")
+
 
 def imprime_mensagem_perdedor(palavra_secreta):
     print("Puxa, você foi enforcado!")
@@ -133,59 +139,58 @@ def imprime_mensagem_perdedor(palavra_secreta):
     print("       \_______/           ")
 
 
-
-
-
 def imprime_mensagem_de_atualizacao_de_jogadas(letras_acertadas, chutes_realizados, qtd_chutes, erros):
-    print("");
+    print("")
     print("Letras Acertadas")
-    print(letras_acertadas,"\n\n");
-    print(RED +"-------------------------------------"+RESET)
+    print(letras_acertadas, "\n\n")
+    print(RED + "-------------------------------------" + RESET)
     print("Você já fez {} chute(s) e teve {} erro(s) :".format(qtd_chutes, erros))
     print(chutes_realizados)
     print(RED + "-------------------------------------\n" + RESET)
+
 
 def mensagem_de_final_de_jogo():
     print(BLUE + "Fim do Jogo!!!" + RESET)
     print("***************************************************************")
     time.sleep(3)
 
+
 def desenha_forca(erros, max_de_chances_para_erros):
     print("Ops.. Você errou.Ainda tem {} chances para errar, cuidado!".format(max_de_chances_para_erros - erros))
     print("  _______     ")
     print(" |/      |    ")
 
-    if(erros == 1):
+    if (erros == 1):
         print(" |      (_)   ")
         print(" |            ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 2):
+    if (erros == 2):
         print(" |      (_)   ")
         print(" |      \     ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 3):
+    if (erros == 3):
         print(" |      (_)   ")
         print(" |      \|    ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 4):
+    if (erros == 4):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 5):
+    if (erros == 5):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |            ")
 
-    if(erros == 6):
+    if (erros == 6):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
@@ -200,6 +205,7 @@ def desenha_forca(erros, max_de_chances_para_erros):
     print(" |            ")
     print("_|___         ")
     print()
+
 
 if (__name__ == '__main__'):
     jogar()
