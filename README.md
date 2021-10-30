@@ -1,2 +1,6 @@
-# Exercícios de Python
-A ideia deste repositório é abordar quais são as principais funções e ferramentas da linguagem python e podem ser úteis para quaisquer uma das áreas que se escolha mais a frente na área de tecnologia.
+# A simple Guessing and Hangman Game implementation
+
+This repository contain a simple Guessing and Hangman Game implementation developed in python3.
+
+I plan to improve it once a week with refactoring implementations, new features and bugfixes.
+
